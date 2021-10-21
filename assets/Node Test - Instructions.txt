@@ -1,0 +1,34 @@
+You are given two json files:
+ - stock.json: contains objects which represent the starting stock levels for given SKUS
+ - transactions.json: contains an array of transactions since the stock levels were recorded in `stock.json`
+The objective is to create a function which is able to return the current stock levels for a given SKU by combining the data in these two files. These are the requirements.
+- The function must match the following signature: `(sku: string) => Promise<{ sku: string, qty: number }>`.
+- The function must read from the `stock` and `transactions` files on each invocation (totals cannot be precomputed)
+- The function must throw an error where the SKU does not exist in the `transactions.json` and `stock.json` file
+- All code must be adequately tested
+Notes:
+- Transactions may exist for SKUs which are not present in `stock.json`. It should be assumed that the starting quantity for these is 0.
+- Functionality can be split into many files to help keep the project clear and organised 
+
+
+
+//Transactions
+{ sku: 'YON323215/74/41', type: 'order', qty: 8 },
+    { sku: 'GPV709367/41/53', type: 'refund', qty: 3 },
+    { sku: 'IZP721309/74/90', type: 'order', qty: 0 },
+    { sku: 'MQI908424/70/79', type: 'order', qty: 8 },
+
+
+//Stocks
+
+  { sku: 'YON323215/74/41', stock: 7927 },
+    { sku: 'DOK019240/66/49', stock: 7709 },
+    { sku: 'NPR640416/53/91', stock: 3231 },
+    { sku: 'VYM838980/39/17', stock: 4620 },
+    { sku: 'SAL508741/19/43', stock: 2245 },
+    { sku: 'SXV420098/71/68', stock: 746 },
+    { sku: 'TVN783304/18/16', stock: 8079 },
+    { sku: 'HGG795032/35/91', stock: 4009 }
+
+
+    ///
